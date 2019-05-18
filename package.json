@@ -13,7 +13,9 @@
   "bugs": {
     "url": "https://github.com/overlookjs/router-match/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@overlook/util-memoize": "^0.1.0"
+  },
   "devDependencies": {
     "@overlookmotel/eslint-config": "^3.0.2",
     "@overlookmotel/eslint-config-jest": "^1.1.1",
