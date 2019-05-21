@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0
+
+Breaking changes:
+
+* Export function for use with `Route.extend`
+
 ## 0.3.0
 
 Breaking changes:
