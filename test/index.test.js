@@ -12,7 +12,7 @@ const {Route} = require('@overlook/core'),
 	{MATCH, HANDLE_MATCH, HANDLE_ROUTE, HANDLE_CHILDREN} = routerMatch;
 
 // Init
-require('./utils');
+require('./support');
 
 const spy = jest.fn;
 

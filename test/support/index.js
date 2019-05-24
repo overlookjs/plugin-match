@@ -1,6 +1,6 @@
 /* --------------------
  * @overlook/router-match
- * Tests utilities
+ * Tests set-up
  * ------------------*/
 
 'use strict';
