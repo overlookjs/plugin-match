@@ -178,6 +178,13 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 		});
 	});
 
+	describe('[MATCH]', () => {
+		it('returns null', () => {
+			const ret = route[MATCH]({});
+			expect(ret).toBeNull();
+		});
+	});
+
 	describe('[HANDLE_ROUTE]', () => {
 		it('returns null', () => {
 			const ret = route[HANDLE_ROUTE]({});
