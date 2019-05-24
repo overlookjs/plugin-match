@@ -9,7 +9,7 @@
 const {Route} = require('@overlook/core'),
 	each = require('jest-each').default,
 	routerMatch = require('../index'),
-	{MATCH, HANDLE_MATCH, HANDLE_ROUTE, HANDLE_CHILDREN} = routerMatch;
+	{identifier, MATCH, HANDLE_MATCH, HANDLE_ROUTE, HANDLE_CHILDREN} = routerMatch;
 
 // Init
 require('./support');
@@ -31,16 +31,29 @@ describe('Extension', () => { // eslint-disable-line jest/lowercase-name
 	});
 
 	describe('when passed to `Route.extend()`', () => {
+		let RouteMatch;
+		beforeEach(() => {
+			RouteMatch = Route.extend(routerMatch);
+		});
+
 		it('returns subclass of Route', () => {
-			const RouteMatch = Route.extend(routerMatch);
 			expect(RouteMatch).toBeFunction();
 			expect(Object.getPrototypeOf(RouteMatch)).toBe(Route);
 			expect(Object.getPrototypeOf(RouteMatch.prototype)).toBe(Route.prototype);
 		});
+
+		it('has identifier symbol', () => {
+			expect(RouteMatch[identifier]).toBeTrue();
+		});
+
+		it('class instance has identifier symbol', () => {
+			const route = new RouteMatch();
+			expect(route[identifier]).toBeTrue();
+		});
 	});
 
 	describe('exports symbols', () => {
-		each([['symbol'], ['MATCH'], ['HANDLE_MATCH'], ['HANDLE_ROUTE'], ['HANDLE_CHILDREN']]).it(
+		each([['identifier'], ['MATCH'], ['HANDLE_MATCH'], ['HANDLE_ROUTE'], ['HANDLE_CHILDREN']]).it(
 			'%s',
 			(key) => {
 				expect(typeof routerMatch[key]).toBe('symbol');
