@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.5.0
+
+Breaking changes:
+
+* Rename identifier symbol property to `.identifier`
+
+Tests:
+
+* Tests for all features
+* Tests: Rename `utils` to `support` [refactor]
+
+Dev:
+
+* Add `package-lock.json`
+* Travis CI cache npm modules
+
 ## 0.4.0
 
 Breaking changes:
