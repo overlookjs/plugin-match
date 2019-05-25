@@ -9,7 +9,7 @@
 const {Route} = require('@overlook/core'),
 	each = require('jest-each').default,
 	routerMatch = require('../index'),
-	{identifier, MATCH, HANDLE_MATCH, HANDLE_ROUTE, HANDLE_CHILDREN} = routerMatch;
+	{IDENTIFIER, MATCH, HANDLE_MATCH, HANDLE_ROUTE, HANDLE_CHILDREN} = routerMatch;
 
 // Init
 require('./support');
@@ -43,17 +43,17 @@ describe('Extension', () => { // eslint-disable-line jest/lowercase-name
 		});
 
 		it('has identifier symbol', () => {
-			expect(RouteMatch[identifier]).toBeTrue();
+			expect(RouteMatch[IDENTIFIER]).toBeTrue();
 		});
 
 		it('class instance has identifier symbol', () => {
 			const route = new RouteMatch();
-			expect(route[identifier]).toBeTrue();
+			expect(route[IDENTIFIER]).toBeTrue();
 		});
 	});
 
 	describe('exports symbols', () => {
-		each([['identifier'], ['MATCH'], ['HANDLE_MATCH'], ['HANDLE_ROUTE'], ['HANDLE_CHILDREN']]).it(
+		each([['IDENTIFIER'], ['MATCH'], ['HANDLE_MATCH'], ['HANDLE_ROUTE'], ['HANDLE_CHILDREN']]).it(
 			'%s',
 			(key) => {
 				expect(typeof routerMatch[key]).toBe('symbol');
