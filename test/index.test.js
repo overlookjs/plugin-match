@@ -6,7 +6,7 @@
 'use strict';
 
 // Modules
-const {Route} = require('@overlook/core'),
+const Route = require('@overlook/route'),
 	each = require('jest-each').default,
 	routerMatch = require('../index'),
 	{IDENTIFIER, MATCH, HANDLE_MATCH, HANDLE_ROUTE, HANDLE_CHILDREN} = routerMatch;
