@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.6.1
+
+Dev:
+
+* Replace `@overlook/core` dev dependency with `@overlook/route`
+
+Docs:
+
+* Readme update
+
 ## 0.6.0
 
 Breaking changes:
