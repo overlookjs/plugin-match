@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.6.3
+
+Features:
+
+* Add debugging instrumentation to `.handle`
+
+Bug fixes:
+
+* Allow super `.handle` method to handle first
+
+Misc:
+
+* Throw error if `[MATCH]` returns invalid result
+
+Tests:
+
+* Remove `jest-each` dependency [refactor]
+* Rename tests [nocode]
+
+Dev:
+
+* Update `@overlook/route` dev dependency
+
+Docs:
+
+* Document all features
+
 ## 0.6.2
 
 Docs:
