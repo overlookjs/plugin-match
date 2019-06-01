@@ -68,8 +68,8 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 		route = new RouteMatch();
 	});
 
-	describe('.handle', () => {
-		describe('calls [MATCH]', () => {
+	describe('`.handle()`', () => {
+		describe('calls `[MATCH]()`', () => {
 			let req;
 			beforeEach(() => {
 				route[MATCH] = spy();
@@ -86,14 +86,14 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 			});
 		});
 
-		it('if [MATCH] returns null, does not call [HANDLE_MATCH]', () => {
+		it('if `[MATCH]()` returns null, does not call `[HANDLE_MATCH]()`', () => {
 			route[MATCH] = () => null;
 			route[HANDLE_MATCH] = spy();
 			route.handle();
 			expect(route[HANDLE_MATCH]).not.toHaveBeenCalled();
 		});
 
-		describe('if [MATCH] returns object, calls [HANDLE_MATCH]', () => {
+		describe('if `[MATCH]()` returns object, calls `[HANDLE_MATCH]()`', () => {
 			let req, match, ret, res;
 			beforeEach(() => {
 				match = {};
@@ -111,13 +111,13 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 				expect(route[HANDLE_MATCH]).toHaveBeenCalledWith(req, match);
 			});
 
-			it('and returns return value of [HANDLE_MATCH]', () => {
+			it('and returns return value of `[HANDLE_MATCH]()`', () => {
 				expect(ret).toBe(res);
 			});
 		});
 	});
 
-	describe('[HANDLE_MATCH]', () => {
+	describe('`[HANDLE_MATCH]()`', () => {
 		describe('if called with match object with truthy `.exact` property', () => {
 			let req, ret, res;
 			beforeEach(() => {
@@ -128,7 +128,7 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 				ret = route[HANDLE_MATCH](req, {exact: true});
 			});
 
-			describe('calls [HANDLE_ROUTE]', () => {
+			describe('calls `[HANDLE_ROUTE]()`', () => {
 				it('once', () => {
 					expect(route[HANDLE_ROUTE]).toHaveBeenCalledTimes(1);
 				});
@@ -138,11 +138,11 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 				});
 			});
 
-			it('does not call [HANDLE_CHILDREN]', () => {
+			it('does not call `[HANDLE_CHILDREN]()`', () => {
 				expect(route[HANDLE_CHILDREN]).not.toHaveBeenCalled();
 			});
 
-			it('returns return value of [HANDLE_ROUTE]', () => {
+			it('returns return value of `[HANDLE_ROUTE]()`', () => {
 				expect(ret).toBe(res);
 			});
 		});
@@ -157,7 +157,7 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 				ret = route[HANDLE_MATCH](req, {exact: false});
 			});
 
-			describe('calls [HANDLE_CHILDREN]', () => {
+			describe('calls `[HANDLE_CHILDREN]()`', () => {
 				it('once', () => {
 					expect(route[HANDLE_CHILDREN]).toHaveBeenCalledTimes(1);
 				});
@@ -167,32 +167,32 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 				});
 			});
 
-			it('does not call [HANDLE_ROUTE]', () => {
+			it('does not call `[HANDLE_ROUTE]()`', () => {
 				expect(route[HANDLE_ROUTE]).not.toHaveBeenCalled();
 			});
 
-			it('returns return value of [HANDLE_CHILDREN]', () => {
+			it('returns return value of `[HANDLE_CHILDREN]()`', () => {
 				expect(ret).toBe(res);
 			});
 		});
 	});
 
-	describe('[MATCH]', () => {
+	describe('`[MATCH]()`', () => {
 		it('returns null', () => {
 			const ret = route[MATCH]({});
 			expect(ret).toBeNull();
 		});
 	});
 
-	describe('[HANDLE_ROUTE]', () => {
+	describe('`[HANDLE_ROUTE]()`', () => {
 		it('returns null', () => {
 			const ret = route[HANDLE_ROUTE]({});
 			expect(ret).toBeNull();
 		});
 	});
 
-	describe('[HANDLE_CHILDREN]', () => {
-		describe("calls 1st child's .handle method", () => {
+	describe('`[HANDLE_CHILDREN]()`', () => {
+		describe("calls 1st child's `.handle()` method", () => {
 			let child, req;
 			beforeEach(() => {
 				child = new Route({handle: spy()});
@@ -211,7 +211,7 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 			});
 		});
 
-		describe("if 1st child's .handle method returns non-null value", () => {
+		describe("if 1st child's `.handle()` method returns non-null value", () => {
 			let child, res;
 			beforeEach(() => {
 				res = {};
@@ -234,7 +234,7 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 			});
 		});
 
-		describe("if 1st child's .handle method returns null", () => {
+		describe("if 1st child's `.handle()` method returns null", () => {
 			let child1, child2, req, res, ret;
 			beforeEach(() => {
 				child1 = new Route({handle: () => null});
@@ -248,7 +248,7 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 				ret = route[HANDLE_CHILDREN](req);
 			});
 
-			describe("calls 2nd child's .handle method", () => {
+			describe("calls 2nd child's `.handle()` method", () => {
 				it('once', () => {
 					expect(child2.handle).toHaveBeenCalledTimes(1);
 				});
@@ -258,7 +258,7 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 				});
 			});
 
-			it("returns 2nd child's .handle method's return value", () => {
+			it("returns 2nd child's `.handle()` method's return value", () => {
 				expect(ret).toBe(res);
 			});
 		});
@@ -268,7 +268,7 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 			expect(ret).toBeNull();
 		});
 
-		it("if all childrens' .handle methods return null, returns null", () => {
+		it("if all childrens' `.handle()` methods return null, returns null", () => {
 			const child1 = new Route({handle: () => null});
 			route.attachChild(child1);
 
