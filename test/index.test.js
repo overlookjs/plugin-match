@@ -115,6 +115,50 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 				expect(ret).toBe(res);
 			});
 		});
+
+		describe('tags error with debug info if thrown in', () => {
+			it('`[MATCH]()`', () => {
+				route[MATCH] = () => { throw new Error('xyz'); };
+				expect(
+					() => route.handle()
+				).toThrowWithMessage(Error, 'xyz (router path /)');
+			});
+
+			it('`[HANDLE_MATCH]()`', () => {
+				route[MATCH] = () => ({exact: true});
+				route[HANDLE_MATCH] = () => { throw new Error('xyz'); };
+				expect(
+					() => route.handle()
+				).toThrowWithMessage(Error, 'xyz (router path /)');
+			});
+
+			it('`[HANDLE_ROUTE]()`', () => {
+				route[MATCH] = () => ({exact: true});
+				route[HANDLE_ROUTE] = () => { throw new Error('xyz'); };
+				expect(
+					() => route.handle()
+				).toThrowWithMessage(Error, 'xyz (router path /)');
+			});
+
+			it('`[HANDLE_CHILDREN]()`', () => {
+				route[MATCH] = () => ({exact: false});
+				route[HANDLE_CHILDREN] = () => { throw new Error('xyz'); };
+				expect(
+					() => route.handle()
+				).toThrowWithMessage(Error, 'xyz (router path /)');
+			});
+
+			it("child's `.handle()` method", () => {
+				route[MATCH] = () => ({exact: false});
+				const child = new Route({name: 'abc'});
+				child.handle = () => { throw new Error('xyz'); };
+				route.attachChild(child);
+
+				expect(
+					() => route.handle()
+				).toThrowWithMessage(Error, 'xyz (router path /abc)');
+			});
+		});
 	});
 
 	describe('`[HANDLE_MATCH]()`', () => {
