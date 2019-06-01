@@ -7,7 +7,6 @@
 
 // Modules
 const Route = require('@overlook/route'),
-	each = require('jest-each').default,
 	routerMatch = require('../index'),
 	{IDENTIFIER, MATCH, HANDLE_MATCH, HANDLE_ROUTE, HANDLE_CHILDREN} = routerMatch;
 
@@ -53,7 +52,7 @@ describe('Extension', () => { // eslint-disable-line jest/lowercase-name
 	});
 
 	describe('exports symbols', () => {
-		each([['IDENTIFIER'], ['MATCH'], ['HANDLE_MATCH'], ['HANDLE_ROUTE'], ['HANDLE_CHILDREN']]).it(
+		it.each([['IDENTIFIER'], ['MATCH'], ['HANDLE_MATCH'], ['HANDLE_ROUTE'], ['HANDLE_CHILDREN']])(
 			'%s',
 			(key) => {
 				expect(typeof routerMatch[key]).toBe('symbol');
