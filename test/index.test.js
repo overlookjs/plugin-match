@@ -93,10 +93,26 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 			expect(route[HANDLE_MATCH]).not.toHaveBeenCalled();
 		});
 
+		describe('throw error if `[MATCH]()` returns', () => {
+			it.each([
+				['not object', true],
+				['object without `.exact` property', {}],
+				['object with non-boolean `.exact` property', {exact: 1}]
+			])('%s', (name, val) => {
+				route[MATCH] = () => val;
+				expect(() => (
+					route.handle()
+				)).toThrowWithMessage(
+					Error,
+					'[MATCH]() must return an object with boolean `.exact` property or null (router path /)'
+				);
+			});
+		});
+
 		describe('if `[MATCH]()` returns object, calls `[HANDLE_MATCH]()`', () => {
 			let req, match, ret, res;
 			beforeEach(() => {
-				match = {};
+				match = {exact: true};
 				route[MATCH] = () => match;
 				route[HANDLE_MATCH] = spy(() => res);
 				req = {};
