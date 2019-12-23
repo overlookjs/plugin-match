@@ -14,7 +14,7 @@
     "url": "https://github.com/overlookjs/router-match/issues"
   },
   "dependencies": {
-    "core-util-is": "^1.0.2"
+    "is-it-type": "^1.1.2"
   },
   "devDependencies": {
     "@overlook/route": "^0.3.0",
