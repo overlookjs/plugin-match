@@ -29,10 +29,11 @@ This extension extends `.handle()` method to call `[MATCH]()` to determine if th
 
 User should define matching logic by overriding `[MATCH]()` method.
 
-`[MATCH]()` should:
+`[MATCH]( req )`:
 
-* Return an object if the request matches this route
-* Return `null` if it doesn't
+* Is called with request object
+* Should return an object if the request matches this route
+* Should return `null` if it doesn't
 
 Object returned in case of a match should have a property `.exact` which is:
 
@@ -65,26 +66,29 @@ The above example says:
 
 ### Handling match
 
-#### `[HANDLE_MATCH]()`
+#### `[HANDLE_MATCH]( req, match )`
 
 In the case of a match, `[HANDLE_MATCH]()` is called.
 
 `[HANDLE_MATCH]()` will:
 
+* Be called with request object and match object (i.e. the object returned by `[MATCH]()`)
 * Call `[HANDLE_ROUTE]()` if exact match
 * Call `[HANDLE_CHILDREN]()` if non-exact match
 
 If you want to take any action before/after handling, extend `[HANDLE_MATCH]()`.
 
-#### `[HANDLE_ROUTE]()`
+#### `[HANDLE_ROUTE]( req )`
 
 `[HANDLE_ROUTE]()` by default does nothing. It returns `null`.
 
 `[HANDLE_ROUTE]()` should be extended by user to handle the request.
 
-#### `[HANDLE_CHILDREN]()`
+It is called with the request object.
 
-`[HANDLE_CHILDREN]()` calls each of the route's childrens' `.handle()` methods until one returns a non-null value. It returns this value to `.handle()` which in turn returns it.
+#### `[HANDLE_CHILDREN]( req )`
+
+`[HANDLE_CHILDREN]()` calls each of the route's childrens' `.handle()` methods with the request object until one returns a non-null value. It returns this value to `.handle()` which in turn returns it.
 
 i.e. First child to say it has handled the request gets it.
 
