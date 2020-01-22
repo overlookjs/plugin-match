@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.7.0
+
+Breaking changes:
+
+* Rename module `@overlook/plugin-match`
+* Return instance of `@overlook/plugin`
+* Drop support for Node v8
+
+No code:
+
+* NPM ignore `.DS_Store` files
+
+Dependencies:
+
+* Switch `core-util-is` for `is-it-type`
+
+Tests:
+
+* Remove unhandled rejection handling
+
+Dev:
+
+* Run tests on CI on Node v13
+* Update dev dependencies
+* ESLint ignore coverage dir
+* Reformat Jest config
+* Remove `sudo` from Travis CI config
+
+Docs:
+
+* README update
+* Versioning policy
+* NPM keywords
+* Update license year
+
 ## 0.6.3
 
 Features:
