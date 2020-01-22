@@ -1,5 +1,5 @@
 /* --------------------
- * @overlook/router-match module
+ * @overlook/plugin-match module
  * ------------------*/
 
 'use strict';

@@ -1,5 +1,5 @@
 {
-  "name": "@overlook/router-match",
+  "name": "@overlook/plugin-match",
   "version": "0.6.3",
   "description": "Overlook framework match router",
   "main": "index.js",
@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/overlookjs/router-match.git"
+    "url": "https://github.com/overlookjs/plugin-match.git"
   },
   "bugs": {
-    "url": "https://github.com/overlookjs/router-match/issues"
+    "url": "https://github.com/overlookjs/plugin-match/issues"
   },
   "dependencies": {
     "is-it-type": "^1.1.2"

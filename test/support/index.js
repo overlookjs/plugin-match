@@ -1,5 +1,5 @@
 /* --------------------
- * @overlook/router-match
+ * @overlook/plugin-match
  * Tests set-up
  * ------------------*/
 

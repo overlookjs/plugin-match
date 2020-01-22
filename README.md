@@ -1,9 +1,9 @@
-[![NPM version](https://img.shields.io/npm/v/@overlook/router-match.svg)](https://www.npmjs.com/package/@overlook/router-match)
-[![Build Status](https://img.shields.io/travis/overlookjs/router-match/master.svg)](http://travis-ci.org/overlookjs/router-match)
-[![Dependency Status](https://img.shields.io/david/overlookjs/router-match.svg)](https://david-dm.org/overlookjs/router-match)
-[![Dev dependency Status](https://img.shields.io/david/dev/overlookjs/router-match.svg)](https://david-dm.org/overlookjs/router-match)
-[![Greenkeeper badge](https://badges.greenkeeper.io/overlookjs/router-match.svg)](https://greenkeeper.io/)
-[![Coverage Status](https://img.shields.io/coveralls/overlookjs/router-match/master.svg)](https://coveralls.io/r/overlookjs/router-match)
+[![NPM version](https://img.shields.io/npm/v/@overlook/plugin-match.svg)](https://www.npmjs.com/package/@overlook/plugin-match)
+[![Build Status](https://img.shields.io/travis/overlookjs/plugin-match/master.svg)](http://travis-ci.org/overlookjs/plugin-match)
+[![Dependency Status](https://img.shields.io/david/overlookjs/plugin-match.svg)](https://david-dm.org/overlookjs/plugin-match)
+[![Dev dependency Status](https://img.shields.io/david/dev/overlookjs/plugin-match.svg)](https://david-dm.org/overlookjs/plugin-match)
+[![Greenkeeper badge](https://badges.greenkeeper.io/overlookjs/plugin-match.svg)](https://greenkeeper.io/)
+[![Coverage Status](https://img.shields.io/coveralls/overlookjs/plugin-match/master.svg)](https://coveralls.io/r/overlookjs/plugin-match)
 
 # Overlook framework match router
 
@@ -44,7 +44,7 @@ The object can have any other custom properties desired.
 
 ```js
 const Route = require('@overlook/route');
-const matchExtension = require('@overlook/router-match');
+const matchExtension = require('@overlook/plugin-match');
 const {MATCH} = matchExtension;
 const RouteMatch = Route.extend( matchExtension );
 
@@ -106,11 +106,11 @@ Use `npm test` to run the tests. Use `npm run cover` to check coverage.
 
 ## Changelog
 
-See [changelog.md](https://github.com/overlookjs/router-match/blob/master/changelog.md)
+See [changelog.md](https://github.com/overlookjs/plugin-match/blob/master/changelog.md)
 
 ## Issues
 
-If you discover a bug, please raise an issue on Github. https://github.com/overlookjs/router-match/issues
+If you discover a bug, please raise an issue on Github. https://github.com/overlookjs/plugin-match/issues
 
 ## Contribution
 
