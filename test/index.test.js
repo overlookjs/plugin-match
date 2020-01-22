@@ -11,8 +11,6 @@ const Route = require('@overlook/route'),
 	{IDENTIFIER, MATCH, HANDLE_MATCH, HANDLE_ROUTE, HANDLE_CHILDREN} = routerMatch;
 
 // Init
-require('./support');
-
 const spy = jest.fn;
 
 // Tests
