@@ -34,7 +34,7 @@
   },
   "keywords": [
     "overlook",
-    "overlook-router",
+    "overlook-plugin",
     "match"
   ],
   "scripts": {
