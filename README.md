@@ -5,25 +5,25 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/overlookjs/plugin-match.svg)](https://greenkeeper.io/)
 [![Coverage Status](https://img.shields.io/coveralls/overlookjs/plugin-match/master.svg)](https://coveralls.io/r/overlookjs/plugin-match)
 
-# Overlook framework match router
+# Overlook framework match plugin
 
 Part of the [Overlook framework](https://overlookjs.github.io/).
 
 ## Abstract
 
-Route class extension which delegates handling of request either to this route, or children, based on matching the request.
+Plugin which delegates handling of requests either to this route, or children, based on matching the request.
 
 This is the base building block of conditional routing.
 
-This module does not include logic for determining which route should handle a request. It only provides the mechanism for delegation to that route once the route-matching decision is made.
+This plugin does not include logic for determining which route should handle a request. It only provides the mechanism for delegation to that route once the route-matching decision is made.
 
-An example of a module which builds on this one is [@overlook/router-path](https://www.npmjs.com/package/@overlook/router-path), which routes requests depending on request path.
+An example of a plugin which builds on this one is [@overlook/plugin-path](https://www.npmjs.com/package/@overlook/plugin-path), which routes requests depending on request path.
 
 ## Usage
 
 ### Handling
 
-This extension extends `.handle()` method to call `[MATCH]()` to determine if this request matches the route. It then calls other methods, depending on the matching result.
+This plugin extends `.handle()` method to call `[MATCH]()` to determine if this request matches the route. It then calls other methods, depending on the matching result.
 
 ### Matching logic
 
@@ -44,11 +44,11 @@ The object can have any other custom properties desired.
 
 ```js
 const Route = require('@overlook/route');
-const matchExtension = require('@overlook/plugin-match');
-const {MATCH} = matchExtension;
-const RouteMatch = Route.extend( matchExtension );
+const matchPlugin = require('@overlook/plugin-match');
+const {MATCH} = matchPlugin;
+const MatchRoute = Route.extend( matchPlugin );
 
-class MyMatchRoute extends RouteMatch {
+class MyMatchRoute extends MatchRoute {
   [MATCH](req) => {
     const {path} = req;
     if (path === '/abc' || path === '/abc/') return {exact: true};

@@ -7,30 +7,24 @@
 
 // Modules
 const Route = require('@overlook/route'),
-	routerMatch = require('../index'),
-	{IDENTIFIER, MATCH, HANDLE_MATCH, HANDLE_ROUTE, HANDLE_CHILDREN} = routerMatch;
+	Plugin = require('@overlook/plugin'),
+	matchPlugin = require('../index'),
+	{MATCH, HANDLE_MATCH, HANDLE_ROUTE, HANDLE_CHILDREN} = matchPlugin;
 
 // Init
 const spy = jest.fn;
 
 // Tests
 
-describe('Extension', () => { // eslint-disable-line jest/lowercase-name
-	it('is a function', () => {
-		expect(routerMatch).toBeFunction();
-	});
-
-	it('returns a subclass of input', () => {
-		const RouteMatch = routerMatch(Route);
-		expect(RouteMatch).toBeFunction();
-		expect(Object.getPrototypeOf(RouteMatch)).toBe(Route);
-		expect(Object.getPrototypeOf(RouteMatch.prototype)).toBe(Route.prototype);
+describe('Plugin', () => { // eslint-disable-line jest/lowercase-name
+	it('is an instance of Plugin class', () => {
+		expect(matchPlugin).toBeInstanceOf(Plugin);
 	});
 
 	describe('when passed to `Route.extend()`', () => {
 		let RouteMatch;
 		beforeEach(() => {
-			RouteMatch = Route.extend(routerMatch);
+			RouteMatch = Route.extend(matchPlugin);
 		});
 
 		it('returns subclass of Route', () => {
@@ -38,22 +32,13 @@ describe('Extension', () => { // eslint-disable-line jest/lowercase-name
 			expect(Object.getPrototypeOf(RouteMatch)).toBe(Route);
 			expect(Object.getPrototypeOf(RouteMatch.prototype)).toBe(Route.prototype);
 		});
-
-		it('has identifier symbol', () => {
-			expect(RouteMatch[IDENTIFIER]).toBeTrue();
-		});
-
-		it('class instance has identifier symbol', () => {
-			const route = new RouteMatch();
-			expect(route[IDENTIFIER]).toBeTrue();
-		});
 	});
 
 	describe('exports symbols', () => {
-		it.each([['IDENTIFIER'], ['MATCH'], ['HANDLE_MATCH'], ['HANDLE_ROUTE'], ['HANDLE_CHILDREN']])(
+		it.each([['MATCH'], ['HANDLE_MATCH'], ['HANDLE_ROUTE'], ['HANDLE_CHILDREN']])(
 			'%s',
 			(key) => {
-				expect(typeof routerMatch[key]).toBe('symbol');
+				expect(typeof matchPlugin[key]).toBe('symbol');
 			}
 		);
 	});
@@ -62,7 +47,7 @@ describe('Extension', () => { // eslint-disable-line jest/lowercase-name
 describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 	let route;
 	beforeEach(() => {
-		const RouteMatch = Route.extend(routerMatch);
+		const RouteMatch = Route.extend(matchPlugin);
 		route = new RouteMatch();
 	});
 
