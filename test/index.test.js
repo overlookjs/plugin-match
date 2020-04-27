@@ -8,7 +8,7 @@
 // Modules
 const Route = require('@overlook/route'),
 	Plugin = require('@overlook/plugin'),
-	matchPlugin = require('../index'),
+	matchPlugin = require('../index.js'),
 	{MATCH, HANDLE_MATCH, HANDLE_ROUTE, HANDLE_CHILDREN} = matchPlugin;
 
 // Init
