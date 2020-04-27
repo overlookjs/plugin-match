@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.7.1
+
+Refactor:
+
+* Fully specify require file paths
+
+Dependencies:
+
+* Update dependencies
+
+No code:
+
+* Config file header comments
+
+Tests:
+
+* Run tests in dev mode
+* Import from package name [refactor]
+* Rename vars [refactor]
+
+Dev:
+
+* Update dev dependencies
+* Run tests on CI on Node v14
+* Replace `.npmignore` with `files` list in `package.json`
+* `.editorconfig` config
+* ESLint lint dot files
+* Remove unnecessary line from `.gitignore`
+* Simplify Jest config
+
 ## 0.7.0
 
 Breaking changes:
