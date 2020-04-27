@@ -1,4 +1,11 @@
+/* --------------------
+ * @overlook/plugin-match module
+ * Tests ESLint config
+ * ------------------*/
+
 'use strict';
+
+// Exports
 
 module.exports = {
 	extends: [

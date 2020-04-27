@@ -1,4 +1,11 @@
+/* --------------------
+ * @overlook/plugin-match module
+ * Jest config
+ * ------------------*/
+
 'use strict';
+
+// Exports
 
 module.exports = {
 	testEnvironment: 'node',
