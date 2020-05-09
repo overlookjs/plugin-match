@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.8.0
+
+Breaking changes:
+
+* Treat `null` as definitive no match
+
+Features:
+
+* ESM export
+
+Refactor:
+
+* Use `invariant`
+
+Dependencies:
+
+* Update `@overlook/route` + `@overlook/plugin` dependencies
+* Update `is-it-type` dependency
+
+Dev:
+
+* Update dev dependencies
+
 ## 0.7.1
 
 Refactor:
