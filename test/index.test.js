@@ -33,15 +33,6 @@ describe('Plugin', () => { // eslint-disable-line jest/lowercase-name
 			expect(Object.getPrototypeOf(MatchRoute.prototype)).toBe(Route.prototype);
 		});
 	});
-
-	describe('exports symbols', () => {
-		it.each([['MATCH'], ['HANDLE_MATCH'], ['HANDLE_ROUTE'], ['HANDLE_CHILDREN']])(
-			'%s',
-			(key) => {
-				expect(typeof matchPlugin[key]).toBe('symbol');
-			}
-		);
-	});
 });
 
 describe('Methods', () => { // eslint-disable-line jest/lowercase-name
