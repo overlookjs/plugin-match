@@ -76,6 +76,13 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 			expect(route[HANDLE_MATCH]).not.toHaveBeenCalled();
 		});
 
+		it('if `[MATCH]()` returns undefined, does not call `[HANDLE_MATCH]()`', () => {
+			route[MATCH] = () => undefined;
+			route[HANDLE_MATCH] = spy();
+			route.handle();
+			expect(route[HANDLE_MATCH]).not.toHaveBeenCalled();
+		});
+
 		describe('throw error if `[MATCH]()` returns', () => {
 			it.each([
 				['not object', true],
@@ -87,7 +94,7 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 					route.handle()
 				)).toThrowWithMessage(
 					Error,
-					'[MATCH]() must return an object with boolean `.exact` property or null (router path /)'
+					'[MATCH]() must return an object with boolean `.exact` property, undefined or null (router path /)'
 				);
 			});
 		});
@@ -221,16 +228,16 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 	});
 
 	describe('`[MATCH]()`', () => {
-		it('returns null', () => {
+		it('returns undefined', () => {
 			const ret = route[MATCH]({});
-			expect(ret).toBeNull();
+			expect(ret).toBeUndefined();
 		});
 	});
 
 	describe('`[HANDLE_ROUTE]()`', () => {
-		it('returns null', () => {
+		it('returns undefined', () => {
 			const ret = route[HANDLE_ROUTE]({});
-			expect(ret).toBeNull();
+			expect(ret).toBeUndefined();
 		});
 	});
 
@@ -277,10 +284,10 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 			});
 		});
 
-		describe("if 1st child's `.handle()` method returns null", () => {
+		describe("if 1st child's `.handle()` method returns undefined", () => {
 			let child1, child2, req, res, ret;
 			beforeEach(() => {
-				child1 = new Route({handle: () => null});
+				child1 = new Route({handle: () => undefined});
 				route.attachChild(child1);
 
 				res = {};
@@ -306,20 +313,20 @@ describe('Methods', () => { // eslint-disable-line jest/lowercase-name
 			});
 		});
 
-		it('if no children, returns null', () => {
+		it('if no children, returns undefined', () => {
 			const ret = route[HANDLE_CHILDREN]();
-			expect(ret).toBeNull();
+			expect(ret).toBeUndefined();
 		});
 
-		it("if all childrens' `.handle()` methods return null, returns null", () => {
-			const child1 = new Route({handle: () => null});
+		it("if all childrens' `.handle()` methods return undefined, returns undefined", () => {
+			const child1 = new Route({handle: () => undefined});
 			route.attachChild(child1);
 
-			const child2 = new Route({handle: () => null});
+			const child2 = new Route({handle: () => undefined});
 			route.attachChild(child2);
 
 			const ret = route[HANDLE_CHILDREN]();
-			expect(ret).toBeNull();
+			expect(ret).toBeUndefined();
 		});
 	});
 });
