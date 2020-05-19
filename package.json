@@ -27,7 +27,7 @@
     "url": "https://github.com/overlookjs/plugin-match/issues"
   },
   "dependencies": {
-    "@overlook/plugin": "^0.2.6",
+    "@overlook/plugin": "^0.3.0",
     "@overlook/route": "^0.6.2",
     "is-it-type": "^4.0.0",
     "simple-invariant": "^2.0.0"
