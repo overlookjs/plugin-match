@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.8.1
+
+Dependencies:
+
+* Update `@overlook/route` + `@overlook/plugin` dependencies
+
+Dev:
+
+* Update dev dependencies
+
 ## 0.8.0
 
 Breaking changes:
