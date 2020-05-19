@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.2
+
+Refactor:
+
+* Shorten code
+
 ## 0.8.1
 
 Dependencies:
