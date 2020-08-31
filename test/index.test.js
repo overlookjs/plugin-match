@@ -16,7 +16,7 @@ const spy = jest.fn;
 
 // Tests
 
-describe('Plugin', () => { // eslint-disable-line jest/lowercase-name
+describe('Plugin', () => {
 	it('is an instance of Plugin class', () => {
 		expect(matchPlugin).toBeInstanceOf(Plugin);
 	});
@@ -27,7 +27,7 @@ describe('Plugin', () => { // eslint-disable-line jest/lowercase-name
 	});
 });
 
-describe('Methods', () => { // eslint-disable-line jest/lowercase-name
+describe('Methods', () => {
 	let route;
 	beforeEach(() => {
 		const MatchRoute = Route.extend(matchPlugin);
