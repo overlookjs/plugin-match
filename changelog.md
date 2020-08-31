@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.8.3
+
+Dependencies:
+
+* Update dependencies
+
+Dev:
+
+* Update dev dependencies
+
 ## 0.8.2
 
 Refactor:

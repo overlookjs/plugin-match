@@ -1,6 +1,6 @@
 {
   "name": "@overlook/plugin-match",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Overlook framework match router",
   "main": "index.js",
   "module": "es/index.js",
