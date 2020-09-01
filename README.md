@@ -33,7 +33,7 @@ User should define matching logic by overriding `[MATCH]()` method.
 
 * Is called with request object
 * Should return an object if the request matches this route
-* Should return `null` if it doesn't
+* Should return `undefined` if it doesn't
 
 Object returned in case of a match should have a property `.exact` which is:
 
@@ -53,7 +53,7 @@ class MyMatchRoute extends MatchRoute {
     const {path} = req;
     if (path === '/abc' || path === '/abc/') return {exact: true};
     if (path.slice(0, 5) === '/abc/') return {exact: false};
-    return null;
+    return undefined;
   }
 }
 ```
@@ -80,7 +80,7 @@ If you want to take any action before/after handling, extend `[HANDLE_MATCH]()`.
 
 #### `[HANDLE_ROUTE]( req )`
 
-`[HANDLE_ROUTE]()` by default does nothing. It returns `null`.
+`[HANDLE_ROUTE]()` by default does nothing. It returns `undefined`.
 
 `[HANDLE_ROUTE]()` should be extended by user to handle the request.
 
@@ -88,7 +88,7 @@ It is called with the request object.
 
 #### `[HANDLE_CHILDREN]( req )`
 
-`[HANDLE_CHILDREN]()` calls each of the route's childrens' `.handle()` methods with the request object until one returns a non-null value. It returns this value to `.handle()` which in turn returns it.
+`[HANDLE_CHILDREN]()` calls each of the route's childrens' `.handle()` methods with the request object until one returns a non-undefined value. It returns this value to `.handle()` which in turn returns it.
 
 i.e. First child to say it has handled the request gets it.
 
